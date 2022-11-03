@@ -10,6 +10,19 @@
 **..\$YOUR_PROJECT>idf.py -p COMX flash or idf.py flash
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
+ERROR	 : Linking CXX executable {PROJECT_NAME}.elf FAILED: {PROJECT_NAME}.elf
+SOLUTION : Detect C and CPP file/code.
+		   Add preprocessor (include).
+
+ERROR	 : HINT: Please make sure that the header name is correct.
+		   Also please check if you've specified all component dependencies with 'idf_component_register(REQUIRES ...)'. 
+		   If the component is not present then it should be added by the IDF Component Manager.
+		   For more information run 'idf.py docs -sp api-guides/build-system.html'.
+		   Also, please check if the header file has been removed, renamed or relocated - refer to the migration guide for more information.
+		   Add additional components to Makefile
+SOLUTION : Add additional components to Makefile (FIXED)
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,6 +43,7 @@ extern "C" {
 
 #include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/task"
 
 #include "esp_system.h"
 #include "esp_log.h"
